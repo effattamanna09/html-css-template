@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Decor - Transform Moments</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/njk/style.css">
+
+</head>
+
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="top-bar-content">
+            <div class="top-bar-left">Transform moments into memories with serene décor</div>
+            <div class="top-bar-right">
+                <span>Follow Us On</span>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-content">
+            <div class="logo">
+                <img src="/njk/images/logo.jpeg" alt="Logo">
+
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="active">HOME</a></li>
+                <li><a href="#about">ABOUT US</a></li>
+                <li><a href="#services">SERVICES</a></li>
+                <li><a href="#gallery">GALLERY</a></li>
+                <li><a href="#contact">CONTACT US</a></li>
+            </ul>
+            <div class="mobile-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Banner Slider -->
+    <div class="banner-slider">
+        <div onclick="changeSlide(1)">
+            <i class="fa-solid fa-caret-right arrow-icon"></i>
+        </div>
+
+        <div class="slide active"
+            style="background-image:  linear-gradient(rgba(0, 0, 0, 0.541), rgba(0, 0, 0, 0.658)), url('/njk/images/banner-2.jpeg')">
+            <div class="banner-content">
+                <h1 class="banner-title">Collect your good memories<br>with our decor</h1>
+                <a href="#about" class="banner-btn">ABOUT US</a>
+            </div>
+        </div>
+
+
+        <div class="slide"
+            style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('/njk/images/banner-1.jpeg')">
+            <div class="banner-content">
+                <h1 class="banner-title">Creating magical moments<br>for your special day</h1>
+                <a href="#services" class="banner-btn">OUR SERVICES</a>
+            </div>
+        </div>
+
+        <div class="slide"
+            style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('/njk/images/banner-1.jpeg')">
+            <div class="banner-content">
+                <h1 class="banner-title">Elegant designs for<br>unforgettable celebrations</h1>
+                <a href="#gallery" class="banner-btn">VIEW GALLERY</a>
+            </div>
+        </div>
+    </div>
+    <!-- service  -->
+    <div class="container">
+        <div class="services-container">
+            <div class="service-card balloon-styling" onclick="handleCardClick(this)">
+                <div class="service-label">Balloon Styling</div>
+            </div>
+
+            <div class="service-card service-middle-card backdrops-props" onclick="handleCardClick(this)">
+                <div class="service-label">Backdrops & Props</div>
+            </div>
+
+            <div class="service-card light-up-numbers" onclick="handleCardClick(this)">
+                <div class="service-label">Light Up Numbers</div>
+            </div>
+
+        </div>
+    </div>
+    <!-- Footer -->
+    <!-- Footer -->
+    <footer
+        style="background:#FC94AF; color:white; text-align:center; padding:15px 0; font-size:14px; margin-top:60px;">
+        &copy; 2025 Event Decor. All rights reserved.
+    </footer>
+
+
+    <script>
+        let slideIndex = 0;
+        const slides = document.querySelectorAll('.slide');
+        function showSlide(index) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            slides[index].classList.add('active');
+        }
+
+        function changeSlide(direction) {
+            slideIndex += direction;
+            if (slideIndex >= slides.length) slideIndex = 0;
+            if (slideIndex < 0) slideIndex = slides.length - 1;
+            showSlide(slideIndex);
+        }
+
+        function currentSlide(index) {
+            slideIndex = index;
+            showSlide(index);
+        }
+
+        // Auto slide
+        let autoSlideInterval = setInterval(() => changeSlide(1), 5000);
+
+        document.querySelector('.banner-slider').addEventListener('mouseenter', () => clearInterval(autoSlideInterval));
+        document.querySelector('.banner-slider').addEventListener('mouseleave', () => {
+            autoSlideInterval = setInterval(() => changeSlide(1), 5000);
+        });
+
+        // Mobile menu toggle
+        document.querySelector('.mobile-toggle').addEventListener('click', () => {
+            document.querySelector('.nav-menu').classList.toggle('show');
+        });
+
+
+        // service js 
+        // Add sparkle effects
+        function createSparkles() {
+            const cards = document.querySelectorAll('.service-card');
+
+            cards.forEach(card => {
+                // Create multiple sparkles for each card
+                for (let i = 0; i < 3; i++) {
+                    const sparkle = document.createElement('div');
+                    sparkle.classList.add('sparkle');
+
+                    // Random positioning
+                    sparkle.style.top = Math.random() * 60 + 20 + '%';
+                    sparkle.style.left = Math.random() * 60 + 20 + '%';
+                    sparkle.style.animationDelay = Math.random() * 2 + 's';
+
+                    card.appendChild(sparkle);
+                }
+            });
+        }
+
+        // Handle card click interactions
+        function handleCardClick(card) {
+            // Add click animation
+            card.classList.add('clicked');
+
+            // Remove animation class after animation completes
+            setTimeout(() => {
+                card.classList.remove('clicked');
+            }, 300);
+
+            // Get service type
+            const serviceType = card.classList[1].replace('-', ' ').toUpperCase();
+
+            // Show alert or perform action
+            console.log(`${serviceType} service selected!`);
+
+            // You can add more functionality here like:
+            // - Opening a modal
+            // - Navigating to a different page
+            // - Showing more details
+        }
+
+        // Add hover sound effect (optional)
+        function addHoverEffects() {
+            const cards = document.querySelectorAll('.service-card');
+
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', () => {
+                    // Add any additional hover effects here
+                    card.style.filter = 'brightness(1.1)';
+                });
+
+                card.addEventListener('mouseleave', () => {
+                    card.style.filter = 'brightness(1)';
+                });
+            });
+        }
+
+        // Initialize effects when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            createSparkles();
+            addHoverEffects();
+        });
+
+        // Add smooth scrolling and performance optimization
+        function optimizePerformance() {
+            const cards = document.querySelectorAll('.service-card');
+
+            // Use passive event listeners for better performance
+            cards.forEach(card => {
+                card.addEventListener('touchstart', handleCardClick, { passive: true });
+            });
+        }
+
+        // Call optimization function
+        optimizePerformance();
+    </script>
+</body>
+
+</html>

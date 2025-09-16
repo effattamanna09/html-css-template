@@ -1,0 +1,460 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+}
+
+/* Top Bar */
+.top-bar {
+    background: #FC94AF;
+    color: white;
+    padding: 10px 0;
+    font-size: 14px;
+}
+
+.top-bar-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.top-bar-left {
+    font-weight: 500;
+}
+
+.top-bar-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.social-icons {
+    display: flex;
+    gap: 10px;
+}
+
+.social-icons a {
+    color: white;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #E01584;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.social-icons a:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+}
+
+/* Navbar */
+.navbar {
+    background: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo img {
+    width: 80px;
+    height: auto;
+}
+
+.nav-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 5px;
+}
+
+.nav-menu li a {
+    text-decoration: none;
+    padding: 4px 20px;
+    border-radius: 25px;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    color: #333;
+    display: block;
+}
+
+.nav-menu li a.active {
+    background: #E01584;
+    color: white;
+}
+
+.nav-menu li a:hover:not(.active) {
+    background: rgba(255, 105, 180, 0.1);
+    color: #E01584;
+}
+
+/* Mobile Toggle */
+.mobile-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.mobile-toggle span {
+    width: 25px;
+    height: 3px;
+    background: #333;
+    margin: 3px 0;
+    transition: 0.3s;
+}
+
+/* Banner */
+.banner-slider {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.slide {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    padding: 20px;
+}
+
+.slide.active {
+    opacity: 1;
+}
+
+/* Banner content */
+.banner-content {
+    text-align: center;
+    color: white;
+    z-index: 3;
+    max-width: 800px;
+    padding: 0 20px;
+}
+
+.banner-title {
+    font-size: clamp(22px, 5vw, 48px);
+    font-weight: 700;
+    margin-bottom: 50px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    line-height: 1.2;
+}
+
+.banner-btn {
+    display: inline-block;
+    background: linear-gradient(135deg, #ff69b4, #ff1493);
+    color: white;
+    padding: 12px 28px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(255, 20, 147, 0.3);
+    font-size: 14px;
+}
+
+.banner-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(255, 20, 147, 0.4);
+}
+
+/* Pink Arrow Icon */
+.arrow-icon {
+    position: absolute;
+    right: 5%;
+    bottom: 50%;
+    width: 50px;
+    height: 50px;
+    color: #E01584 !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 70px;
+
+
+    z-index: 5;
+    animation: pinkArrowFloat 2s ease-in-out infinite;
+    cursor: pointer;
+}
+
+@keyframes pinkArrowFloat {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .nav-menu {
+        display: none;
+        flex-direction: column;
+        background: white;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        width: 220px;
+        padding: 15px 0;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-menu.show {
+        display: flex;
+    }
+
+    .mobile-toggle {
+        display: flex;
+    }
+
+    .logo img {
+        width: 65px;
+    }
+
+    .banner-number {
+        font-size: clamp(60px, 12vw, 150px);
+    }
+
+    .banner-title {
+        font-size: clamp(20px, 4vw, 36px);
+    }
+}
+
+@media (max-width: 576px) {
+    .top-bar-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 8px;
+    }
+
+    .banner-btn {
+        font-size: 13px;
+        padding: 10px 22px;
+    }
+
+}
+
+
+/* home page serveice  */
+.services-container {
+    margin-top: 5%;
+    display: flex;
+    gap: 56px;
+    width: 100%;
+    justify-content: center;
+    align-items: flex-end;
+    margin-bottom: 20px;
+}
+
+.service-card {
+    position: relative;
+    width: 350px;
+    height: 450px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    background-size: cover;
+    background-position: center;
+}
+.service-middle-card {
+    height: 380px !important;
+    margin-bottom: 5%;
+}
+.service-card:hover {
+    transform: translateY(-10px) scale(1.02);
+}
+
+/* Left card - Curved on LEFT side only */
+.balloon-styling {
+    border-radius: 330px 0px 0px 0px;
+    overflow: visible;
+    background-image: url('/njk/images/s1.jpg');
+}
+
+/* Middle card - Rectangle shape */
+.backdrops-props {
+    border-radius: 25px;
+    overflow: visible;
+    background-image: url('/njk/images/s2.jpg');
+}
+
+/* Right card - Curved on RIGHT side only */
+.light-up-numbers {
+    border-radius: 0px 330px 0px 0px;
+    overflow: visible;
+    background-image: url('/njk/images/s3.jpg');
+}
+
+.service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+}
+
+.service-label {
+    position: absolute;
+    bottom: -25px;
+    left: 25px;
+    right: 25px;
+    z-index: 2;
+    padding: 15px 25px;
+    border-radius: 25px;
+    font-weight: bold;
+    font-size: 13px;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    color: white;
+    text-align: center;
+    transition: all 0.3s ease;
+    background: #E91E63;
+    box-shadow: 0 5px 20px rgba(233, 30, 99, 0.4);
+    border: none;
+    outline: none;
+}
+
+.service-card:hover .service-label {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(233, 30, 99, 0.6);
+    background: #C2185B;
+}
+
+/* Color overlays for each card */
+.balloon-styling::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+}
+
+.backdrops-props::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+}
+
+.light-up-numbers::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+}
+
+/* Sparkle animation effects */
+.sparkle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: white;
+    border-radius: 50%;
+    z-index: 3;
+    animation: sparkleAnimation 2s infinite;
+}
+
+@keyframes sparkleAnimation {
+
+    0%,
+    100% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+}
+
+/* Responsive design */
+@media (max-width: 968px) {
+    .services-container {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 25px;
+    }
+}
+
+@media (max-width: 768px) {
+    .service-card {
+        width: 300px;
+        height: 380px;
+    }
+
+    .services-container {
+        gap: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .service-card {
+        width: 280px;
+        height: 350px;
+    }
+}
+
+/* Interactive effects */
+.service-card.clicked {
+    animation: clickPulse 0.3s ease;
+}
+
+@keyframes clickPulse {
+    0% {
+        transform: translateY(-10px) scale(1.02);
+    }
+
+    50% {
+        transform: translateY(-15px) scale(1.05);
+    }
+
+    100% {
+        transform: translateY(-10px) scale(1.02);
+    }
+}
